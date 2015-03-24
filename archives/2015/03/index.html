@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="theme-next use-motion">
+<html class="theme-next use-motion theme-next-next">
 <head>
   
 
@@ -13,7 +13,7 @@
   <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
 
 
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.3.0"/>
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.0"/>
 
 
     <meta name="description" content="No Mercy!" />
@@ -27,7 +27,7 @@
 
 
 
-    <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.3.0" />
+    <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.0" />
 
 
 
@@ -42,12 +42,14 @@
     <div id="header" class="header">
       <div class="header-inner">
         <h1 class="site-meta">
-    <a href="/" class="brand">
-        <span class="logo">
-          <i class="icon-logo"></i>
-        </span>
-        <span class="site-title">Kykiske's Notebook</span>
-    </a>
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">Kykiske's Notebook</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
 </h1>
 
 
@@ -100,7 +102,7 @@
     
      
     
-    嗯..! 目前共计 1 篇日志。 继续努力。
+    嗯..! 目前共计 2 篇日志。 继续努力。
   </span>
 
   
@@ -114,6 +116,56 @@
       <div class="collection-title">
         <h2 class="archive-year motion-element" id="archive-year-2015">2015</h2>
       </div>
+    
+    
+
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2015/03/24/2015Plan/">
+                2015 Plan
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          
+            03-24
+          
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    
+
+    
+  </div>
+
+
+
+  
+
+    
+    
+    
+
     
     
 
@@ -142,6 +194,9 @@
             03-23
           
         </span>
+
+        
+
         
           
         
@@ -184,22 +239,22 @@
       <p class="site-description motion-element">No Mercy!</p>
       <div class="site-state motion-element">
         <div class="site-state-item site-state-posts">
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">日志</span>
         </div>
         <div class="site-state-item site-state-tags">
-            <span class="site-state-item-count">0</span>
+            <span class="site-state-item-count">1</span>
             <span class="site-state-item-name">标签</span>
         </div>
         <div class="site-state-item site-state-pages">
-            <span class="site-state-item-count">0</span>
+            <span class="site-state-item-count">1</span>
             <span class="site-state-item-name">页面</span>
         </div>
       </div>
 
       
 
-      <div class="social-info motion-element">
+      <div class="links-of-author motion-element">
         
       </div>
 
@@ -234,7 +289,10 @@
 </div>
 
 <div class="theme-info">
-  主题 - <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT</a>
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
 </div>
 
 
@@ -295,8 +353,6 @@
   <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
   <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
 
-  
-
   <script type="text/javascript" id="motion.global">
   $(document).ready(function () {
     var body = $('body');
@@ -324,6 +380,7 @@
     var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
     var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
 
+    LogoAndMenuMotion();
     sidebatToggleMotion();
     postsListMotion();
     backToTopMotion();
@@ -338,6 +395,16 @@
         sidebarContentMotion();
       })
       .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
 
 
     function backToTopMotion () {
@@ -384,7 +451,7 @@
     }
 
     function postsListMotion () {
-      var postMotionOptions = postMotionOptions || {stagger: 300, drag: true};
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
       $('.post').velocity('transition.slideDownIn', postMotionOptions);
     }
 
